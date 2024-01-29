@@ -3,7 +3,7 @@ import { queries, StarshipQueries } from "./querydata";
 
 export const querySchema = (source: string) => {
   switch (source) {
-    case "Planet":
+    case "Planets":
       return queries();
     case "Starship":
       return StarshipQueries();
