@@ -1,12 +1,11 @@
-// import { queriesPlanet, queriesStarship } from "./queries";
-import { queries, StarshipQueries } from "./querydata";
+import { queriesPlanet, queriesStarship } from "./queries";
 
 export const querySchema = (source: string) => {
   switch (source) {
     case "Planets":
-      return queries();
+      return queriesPlanet();
     case "Starship":
-      return StarshipQueries();
+      return queriesStarship();
     default:
       return undefined;
   }
