@@ -8,7 +8,8 @@ import {
   SearchInput, 
   SelectInput, 
   ArrayField, 
-  Pagination 
+  Pagination, 
+  DateField
 } from "react-admin";
 
 interface Starships {
@@ -22,22 +23,22 @@ interface Starships {
   };
 }
 
-const postFilters = [
+const starshipFilters = [
   <SearchInput source="q" alwaysOn resettable={false} />, 
   <TextField source="name" label="Name" sort={{ field: "name", order: "ASC" }} />, 
   <SelectInput source="name" />
 ];
 
-const PostPagination = () => <Pagination rowsPerPageOptions={[5, 10, 15, 25]} />;
+const StarshipPagination = () => <Pagination rowsPerPageOptions={[5, 10, 15, 25]} />;
 
 const StarshipsList: React.FC = (props) => (
-  <List {...props} 
-    filters={postFilters} 
-    sort={{ field: "name", order: "ASC" }}
-    pagination={<PostPagination />}
-  >
+  <List {...props} filters={starshipFilters} sort={{ field: "name", order: "ASC" }} pagination={<StarshipPagination />}>
     <Datagrid rowClick="edit">
       <TextField source="name" label="Starships Name" sortByOrder="DESC" />
+      <TextField source="model" />
+      <TextField source="manufacturers" />
+      <TextField source="passengers" />
+      <DateField source="edited" />
       <FunctionField
         label="Film Connection"
         render={(record: Starships) => (
